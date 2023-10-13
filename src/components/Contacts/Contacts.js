@@ -1,5 +1,7 @@
 export const Contacts = ({name ,number}) => {
-    console.log(name)
+    
+    console.log(name);
+
     return <ul>
         <li>{name}:{number}</li>
     </ul>
