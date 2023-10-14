@@ -8,7 +8,7 @@ const PhonebookSchema = Yup.object().shape({
     .required('Required'),
   number: Yup.number()
     .min(2, 'Too Short!')
-    .max(50, 'Too Long!')
+    .max(9999999999, 'Too Long!')
     .required('Required'),
 });
 
@@ -31,7 +31,7 @@ export const PhonebookForm = ({onAdd}) => {
         <ErrorMessage name="name"/>
 
         <label htmlFor="lastName">Number</label>
-        <Field type="number" name="number" placeholder="Number" />
+        <Field type="tel" name="number" placeholder="Number" />
         <ErrorMessage name="number"/>
         <button type="submit">Add contact</button>
       </Form>
