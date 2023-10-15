@@ -28,8 +28,10 @@ export class App extends Component {
     });
   };
 
-  deleteContact = () => {
-
+  deleteContact = contactId => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== contactId),
+    }));
   };
 
   render() {
@@ -43,7 +45,10 @@ export class App extends Component {
       <>
         <PhonebookForm onAdd={this.addContact} />
         <SearchBar filter={filter} onChengeContact={this.chengeContactFilter} />
-        <Contacts listContacts={getVisibleContacts} onDelete = {this.deleteContact} />
+        <Contacts
+          listContacts={getVisibleContacts}
+          onDelete={this.deleteContact}
+        />
       </>
     );
   }
