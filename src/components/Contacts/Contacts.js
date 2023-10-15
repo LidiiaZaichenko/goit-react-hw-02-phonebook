@@ -1,9 +1,10 @@
-export const Contacts = ({ listContacts }) => {
+export const Contacts = ({ listContacts,oonDelete}) => {
   return (
     <ul>
       {listContacts.map(listContact => (
-        <li id = {listContact.id}>
+        <li key = {listContact.id}>
           {listContact.name} : {listContact.number}
+          <button>Delete</button>
         </li>
       ))}
     </ul>
