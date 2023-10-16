@@ -3,6 +3,7 @@ import { PhonebookForm } from './PhonebookForm/PhonebookForm';
 import { nanoid } from 'nanoid';
 import { Contacts } from './Contacts/Contacts';
 import { SearchBar } from './SearchBar/SearchBar';
+import { Title } from './Title/Title';
 
 export class App extends Component {
   state = {
@@ -43,12 +44,20 @@ export class App extends Component {
 
     return (
       <>
-        <PhonebookForm onAdd={this.addContact} />
-        <SearchBar filter={filter} onChengeContact={this.chengeContactFilter} />
-        <Contacts
-          listContacts={getVisibleContacts}
-          onDelete={this.deleteContact}
-        />
+        <Title title = 'Phonebook'>
+          <PhonebookForm onAdd={this.addContact} />
+        </Title>
+
+        <Title title = 'Contacts'>
+          <SearchBar
+            filter={filter}
+            onChengeContact={this.chengeContactFilter}
+          />
+          <Contacts
+            listContacts={getVisibleContacts}
+            onDelete={this.deleteContact}
+          />
+        </Title>
       </>
     );
   }
