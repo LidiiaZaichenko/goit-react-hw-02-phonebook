@@ -17,10 +17,17 @@ export class App extends Component {
   };
 
   addContact = newContact => {
-    console.log(newContact);
-    this.setState(prevState => ({
-      contacts: [...prevState.contacts, { ...newContact, id: nanoid() }],
-    }));
+    const dubleContact = this.state.contacts.find(
+      item => item.name === newContact.name
+    );
+
+    if (dubleContact) {
+      alert(newContact.name + ' is already in contacts');
+    } else {
+      this.setState(prevState => ({
+        contacts: [...prevState.contacts, { ...newContact, id: nanoid() }],
+      }));
+    }
   };
 
   chengeContactFilter = newFilter => {
