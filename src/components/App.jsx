@@ -44,11 +44,11 @@ export class App extends Component {
 
     return (
       <>
-        <Title title = 'Phonebook'>
+        <Title title="Phonebook">
           <PhonebookForm onAdd={this.addContact} />
         </Title>
 
-        <Title title = 'Contacts'>
+        <Title title="Contacts">
           <SearchBar
             filter={filter}
             onChengeContact={this.chengeContactFilter}
