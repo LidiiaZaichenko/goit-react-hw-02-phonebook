@@ -40,19 +40,14 @@ export class App extends Component {
     }));
   };
 
-  // getVisibleContacts = () => {
-  //   return this.setState(prevState => ({
-  //     contacts: prevState.contacts.filter(contact => 
-  //       contact.name.toLowerCase().includes(this.state.filter.toLowerCase())),
-  //   }));
-  // };
+  getVisibleContacts = () => {
+    return this.state.contacts.filter(contact =>
+      contact.name.toLowerCase().includes(this.state.filter.toLowerCase())
+    );
+  };
 
   render() {
-    const { contacts, filter } = this.state;
-
-    const getVisibleContacts = contacts.filter(contact =>
-      contact.name.toLowerCase().includes(filter.toLowerCase())
-    );
+    const { filter } = this.state;
 
     return (
       <>
@@ -66,7 +61,7 @@ export class App extends Component {
             onChengeContact={this.chengeContactFilter}
           />
           <Contacts
-            listContacts={getVisibleContacts}
+            listContacts={this.getVisibleContacts()}
             onDelete={this.deleteContact}
           />
         </Title>
