@@ -18,16 +18,14 @@ export class App extends Component {
 
   addContact = newContact => {
     const dubleContact = this.state.contacts.find(
-      item => item.name === newContact.name
+      item => item.name.toLowerCase() === newContact.name.toLowerCase()
     );
-
     if (dubleContact) {
       alert(newContact.name + ' is already in contacts');
-    } else {
-      this.setState(prevState => ({
-        contacts: [...prevState.contacts, { ...newContact, id: nanoid() }],
-      }));
     }
+    return this.setState(prevState => ({
+      contacts: [...prevState.contacts, { ...newContact, id: nanoid() }],
+    }));
   };
 
   chengeContactFilter = newFilter => {
@@ -41,6 +39,13 @@ export class App extends Component {
       contacts: prevState.contacts.filter(contact => contact.id !== contactId),
     }));
   };
+
+  // getVisibleContacts = () => {
+  //   return this.setState(prevState => ({
+  //     contacts: prevState.contacts.filter(contact => 
+  //       contact.name.toLowerCase().includes(this.state.filter.toLowerCase())),
+  //   }));
+  // };
 
   render() {
     const { contacts, filter } = this.state;
